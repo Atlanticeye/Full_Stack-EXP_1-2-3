@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --primary: #007BFF;
+    }
+
+    [data-theme="dark"] {
+      --bg: #1e1e1e;
+      --text: #ffffff;
+      --primary: #00bcd4;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      grid-template-rows: 60px 1fr;
+      grid-template-areas:
+        "sidebar header"
+        "sidebar main";
+      height: 100vh;
+    }
+
+    header {
+      grid-area: header;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .sidebar {
+      grid-area: sidebar;
+      background: #333;
+      color: white;
+      padding: 20px;
+    }
+
+    .main {
+      grid-area: main;
+      padding: 20px;
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .card {
+      background: var(--primary);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <div class="dashboard">
+    <div class="sidebar">
+      <h2>Admin</h2>
+      <ul>
+        <li>Overview</li>
+        <li>Users</li>
+        <li>Settings</li>
+      </ul>
+    </div>
+    <header>
+      <h1>Dashboard</h1>
+      <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    </header>
+    <main class="main">
+      <h2>Welcome Back</h2>
+      <div class="card">
+        <h3>Users: 1,024</h3>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      body.dataset.theme = body.dataset.theme === "dark" ? "light" : "dark";
+    }
+  </script>
+</body>
+</html>
